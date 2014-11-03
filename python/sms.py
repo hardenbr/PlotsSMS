@@ -11,7 +11,10 @@ class sms():
         # model name
         self.modelname = "GGM"
         # decay chain
-        self.label= " GGM"
+        self.label= " Razor - GGM Bino-like #chi^{0}_{1}"
+        self.exclusion= "        NLO Exclusion"
+        self.topology=" "
+        self.selection="#geq 2#gamma #geq 1j"
         #self.label= "pp#rightarrow#tilde{g}#tilde{g}/#tilde{q}#tilde{q}#rightarrow 2#tilde{#chi}^{0}_{1}+jet(s)";
         # scan range to plot
         self.Xmin = 1200
@@ -30,8 +33,10 @@ class sms():
         # model name
         self.modelname = "T5gg"
         # decay chain
-        self.label= "pp#rightarrow#tilde{g}#tilde{g}, #tilde{g}#rightarrow q#bar{q} #tilde{#chi}^{0}_{1}";
-        self.label= "T5gg";
+        self.topology = "pp #rightarrow #tilde{g}#tilde{g}, #tilde{g} #rightarrow (#tilde{#chi}^{0}_{1} #rightarrow #tilde{G}#gamma) + 2j"
+        self.selection="#geq 2#gamma #geq 1j"
+        self.label= " Razor - T5gg SMS"
+        self.exclusion= "NLO+NLL Exclusion"
         # scan range to plot
         self.Xmin = 800
         self.Xmax = 1500

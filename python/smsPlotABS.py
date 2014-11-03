@@ -39,7 +39,7 @@ class smsPlotABS(object):
         rt.gStyle.SetOptStat(0)
         rt.gStyle.SetOptTitle(0)        
 
-        self.c.SetLogz()
+        #self.c.SetLogz()
         self.c.SetTickx(1)
         self.c.SetTicky(1)
 
@@ -51,6 +51,7 @@ class smsPlotABS(object):
         # set x axis
         self.emptyHisto.GetXaxis().SetLabelFont(42)
         self.emptyHisto.GetXaxis().SetLabelSize(0.04)
+        self.emptyHisto.GetXaxis().SetLabelOffset(0.013)
         self.emptyHisto.GetXaxis().SetTitleFont(42)
         self.emptyHisto.GetXaxis().SetTitleSize(0.05)
         self.emptyHisto.GetXaxis().SetTitleOffset(1.2)
@@ -62,7 +63,7 @@ class smsPlotABS(object):
         self.emptyHisto.GetYaxis().SetLabelSize(0.04)
         self.emptyHisto.GetYaxis().SetTitleFont(42)
         self.emptyHisto.GetYaxis().SetTitleSize(0.05)
-        self.emptyHisto.GetYaxis().SetTitleOffset(1.35)
+        self.emptyHisto.GetYaxis().SetTitleOffset(1.40)
         self.emptyHisto.GetYaxis().SetTitle(self.model.LSP)
         #self.emptyHisto.GetYaxis().CenterTitle(True)
                 
@@ -95,20 +96,22 @@ class smsPlotABS(object):
         #textCMS.SetTextSize(0.038)
         #textCMS.Draw()
         #self.c.textCMS = textCMS
+
         # MODEL LABEL
-        textModelLabel= rt.TLatex(0.16,0.90,"%s  NLO+NLL exclusion" %self.model.label)
+        textModelLabel= rt.TLatex(0.16,0.90,"%s" %self.model.label)
         textModelLabel.SetNDC()
         textModelLabel.SetTextAlign(13)
         textModelLabel.SetTextFont(42)
-        textModelLabel.SetTextSize(0.040)
+        textModelLabel.SetTextSize(0.045)
         textModelLabel.Draw()
         self.c.textModelLabel = textModelLabel
+
         # NLO NLL XSEC
-        textNLONLL= rt.TLatex(0.16,0.32,"NLO-NLL exclusion")
+        textNLONLL= rt.TLatex(0.2,0.32,"NLO-NLL exclusion")
         textNLONLL.SetNDC()
         textNLONLL.SetTextAlign(13)
         textNLONLL.SetTextFont(42)
-        textNLONLL.SetTextSize(0.040)
+        textNLONLL.SetTextSize(0.035)
         textNLONLL.Draw()
         #self.c.textNLONLL = textNLONLL
 
@@ -150,9 +153,9 @@ class smsPlotABS(object):
         LObsM.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-1.50*yRange/100*10)
         LObsM.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-1.50*yRange/100*10)
 
-        textObs = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-1.50*yRange/100*10, "Observed #pm 1 #sigma_{theory}")
+        textObs = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-1.50*yRange/100*10, "Observed #pm 1 #sigma_{theory}  %s" % self.model.exclusion)
         textObs.SetTextFont(42)
-        textObs.SetTextSize(0.040)
+        textObs.SetTextSize(0.035)
         textObs.Draw()
         self.c.textObs = textObs
 
@@ -183,11 +186,18 @@ class smsPlotABS(object):
         LExpM.SetPoint(0,self.model.Xmin+3*xRange/100, self.model.Ymax-2.15*yRange/100*10)
         LExpM.SetPoint(1,self.model.Xmin+10*xRange/100, self.model.Ymax-2.15*yRange/100*10)
 
-        textExp = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-2.15*yRange/100*10, "Expected #pm 1 #sigma_{experiment}")
+        textExp = rt.TLatex(self.model.Xmin+11*xRange/100, self.model.Ymax-2.15*yRange/100*10, "Expected #pm 1 #sigma_{experiment}              %s" % self.model.selection)
         textExp.SetTextFont(42)
-        textExp.SetTextSize(0.040)
+        textExp.SetTextSize(0.035)
         textExp.Draw()
         self.c.textExp = textExp
+
+        #modification to draw the latex topology for T5gg
+        textTopo = rt.TLatex(self.model.Xmin+5*xRange/100, self.model.Ymax-3.2*yRange/100*10, "%s" % self.model.topology)
+        textTopo.SetTextFont(42)
+        textTopo.SetTextSize(0.040)
+        textTopo.Draw()
+        self.c.textTopo = textTopo
 
         LObs.Draw("LSAME")
         LObsM.Draw("LSAME")
@@ -246,4 +256,3 @@ class smsPlotABS(object):
         self.OBS['plus'].Draw("LSAME")
         self.OBS['minus'].Draw("LSAME")        
 
-        
