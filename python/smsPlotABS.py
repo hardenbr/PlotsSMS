@@ -80,8 +80,8 @@ class smsPlotABS(object):
         graphWhite.SetLineWidth(3)
         graphWhite.SetPoint(0,self.model.Xmin, self.model.Ymax)
         graphWhite.SetPoint(1,self.model.Xmax, self.model.Ymax)
-        graphWhite.SetPoint(2,self.model.Xmax, self.model.Ymax*0.75)   #change for t5gg
-        graphWhite.SetPoint(3,self.model.Xmin, self.model.Ymax*0.75)   #change for t5gg
+        graphWhite.SetPoint(2,self.model.Xmax, (self.model.Ymax - self.model.Ymin)*0.75 + self.model.Ymin)   #change for t5gg
+        graphWhite.SetPoint(3,self.model.Xmin, (self.model.Ymax - self.model.Ymin)*0.75 + self.model.Ymin)   #change for t5gg
         graphWhite.SetPoint(4,self.model.Xmin, self.model.Ymax)
         graphWhite.Draw("FSAME")
         graphWhite.Draw("LSAME")

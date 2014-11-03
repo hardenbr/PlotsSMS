@@ -5,7 +5,26 @@ class sms():
     def __init__(self, modelname):        
         if modelname.find("T1bbbb") != -1: self.T1bbbb()
         if modelname.find("T5gg") != -1: self.T5gg()
+        if modelname.find("GGM") != -1: self.GGM()
 
+    def GGM(self):
+        # model name
+        self.modelname = "GGM"
+        # decay chain
+        self.label= " GGM"
+        #self.label= "pp#rightarrow#tilde{g}#tilde{g}/#tilde{q}#tilde{q}#rightarrow 2#tilde{#chi}^{0}_{1}+jet(s)";
+        # scan range to plot
+        self.Xmin = 1200
+        self.Xmax = 2000
+        self.Ymin = 1200
+        self.Ymax = 2250
+        # produce sparticle
+        self.sParticle = "m_{#tilde{q}} (GeV)"
+        # LSP
+        self.LSP = "m_{#tilde{g}} (GeV)"        
+        # diagonal position: mLSP = mgluino - 2mtop 
+        self.diagX = array('d',[0, 0])
+        self.diagY = array('d',[0, 0])        
 
     def T5gg(self):
         # model name

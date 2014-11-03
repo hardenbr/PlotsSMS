@@ -61,7 +61,7 @@ class smsPlotXSEC(smsPlotABS):
         self.emptyHisto.GetXaxis().SetRangeUser(self.model.Xmin, self.model.Xmax)
         self.emptyHisto.GetYaxis().SetRangeUser(self.model.Ymin, self.model.Ymax)
         self.emptyHisto.Draw()
-        self.histo.SetMaximum(5)
+        self.histo.SetMaximum(3)
         self.histo.SetMinimum(.6)
         self.histo.Draw("COLZSAME")
         self.DrawDiagonal()
