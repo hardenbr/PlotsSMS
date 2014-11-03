@@ -2,6 +2,7 @@ import ROOT as rt
 from array import *
 from sms import *
 from smsPlotABS import *
+import CMS_lumi
 
 # class producing the 2D plot with xsec colors
 class smsPlotXSEC(smsPlotABS):
@@ -10,7 +11,7 @@ class smsPlotXSEC(smsPlotABS):
         self.standardDef(modelname, histo, obsLimits, expLimits, energy, lumi, preliminary)
         self.LABEL = label
         # canvas for the plot
-        self.c = rt.TCanvas("cCONT_%s" %label,"cCONT_%s" %label,600,600)
+        self.c = rt.TCanvas("cCONT_%s" %label,"cCONT_%s" %label, 600, 600)
         self.histo = histo['histogram']
         # canvas style
         self.setStyle()
@@ -47,7 +48,7 @@ class smsPlotXSEC(smsPlotABS):
         palette.SetLabelSize(0.035)
 
     def DrawPaletteLabel(self):
-        textCOLZ = rt.TLatex(0.98,0.15,"95% C.L. upper limit on cross section (pb)")
+        textCOLZ = rt.TLatex(0.98,0.15,"95% C.L. upper limit on cross section (fb)")
         textCOLZ.SetNDC()
         #textCOLZ.SetTextAlign(13)
         textCOLZ.SetTextFont(42)
@@ -60,10 +61,13 @@ class smsPlotXSEC(smsPlotABS):
         self.emptyHisto.GetXaxis().SetRangeUser(self.model.Xmin, self.model.Xmax)
         self.emptyHisto.GetYaxis().SetRangeUser(self.model.Ymin, self.model.Ymax)
         self.emptyHisto.Draw()
+        self.histo.SetMaximum(5)
+        self.histo.SetMinimum(.6)
         self.histo.Draw("COLZSAME")
         self.DrawDiagonal()
         self.DrawLines()
         self.DrawText()
         self.DrawLegend()
         self.DrawPaletteLabel()
+        CMS_lumi.CMS_lumi(self.c, 2, 0)
         

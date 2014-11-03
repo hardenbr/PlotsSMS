@@ -8,6 +8,8 @@ if __name__ == '__main__':
     # read input arguments
     filename = sys.argv[1]
     modelname = sys.argv[1].split("/")[-1].split("_")[0]
+    print sys.argv[1].split("/")
+    print sys.argv[1].split("/")[-1].split("_")
     analysisLabel = sys.argv[1].split("/")[-1].split("_")[1]
     outputname = sys.argv[2]
 
@@ -19,12 +21,14 @@ if __name__ == '__main__':
     xsecPlot.Draw()
     xsecPlot.Save("%sXSEC" %outputname)
 
-    # only lines
-    contPlot = smsPlotCONT(modelname, fileIN.HISTOGRAM, fileIN.OBSERVED, fileIN.EXPECTED, fileIN.ENERGY, fileIN.LUMI, fileIN.PRELIMINARY, "")
-    contPlot.Draw()
-    contPlot.Save("%sCONT" %outputname)
+    # # only lines
+    # contPlot = smsPlotCONT(modelname, fileIN.HISTOGRAM, fileIN.OBSERVED, fileIN.EXPECTED, fileIN.ENERGY, fileIN.LUMI, fileIN.PRELIMINARY, "")
+    # contPlot.Draw()
+    # contPlot.Save("%sCONT" %outputname)
 
-    # brazilian flag (show only 1 sigma)
-    brazilPlot = smsPlotBrazil(modelname, fileIN.HISTOGRAM, fileIN.OBSERVED, fileIN.EXPECTED, fileIN.ENERGY, fileIN.LUMI, fileIN.PRELIMINARY, "")
-    brazilPlot.Draw()
-    brazilPlot.Save("%sBAND" %outputname)
+    # # brazilian flag (show only 1 sigma)
+    # brazilPlot = smsPlotBrazil(modelname, fileIN.HISTOGRAM, fileIN.OBSERVED, fileIN.EXPECTED, fileIN.ENERGY, fileIN.LUMI, fileIN.PRELIMINARY, "")
+    # brazilPlot.Draw()
+    # brazilPlot.Save("%sBAND" %outputname)
+
+    raw_input("RAW INPUT")

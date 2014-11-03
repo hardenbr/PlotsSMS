@@ -2,27 +2,28 @@ from array import *
 
 class sms():
 
-    def __init__(self, modelname):
-        if modelname.find("T1tttt") != -1: self.T1tttt()
+    def __init__(self, modelname):        
         if modelname.find("T1bbbb") != -1: self.T1bbbb()
+        if modelname.find("T5gg") != -1: self.T5gg()
 
 
-    def T1tttt(self):
+    def T5gg(self):
         # model name
-        self.modelname = "T1tttt"
+        self.modelname = "T5gg"
         # decay chain
-        self.label= "pp #rightarrow #tilde{g} #tilde{g}, #tilde{g} #rightarrow t #bar{t} #tilde{#chi}^{0}_{1}";
+        self.label= "pp#rightarrow#tilde{g}#tilde{g}, #tilde{g}#rightarrow q#bar{q} #tilde{#chi}^{0}_{1}";
+        self.label= "T5gg";
         # scan range to plot
-        self.Xmin = 600
-        self.Xmax = 1400
+        self.Xmin = 800
+        self.Xmax = 1500
         self.Ymin = 0
-        self.Ymax = 800
+        self.Ymax = 2000
         # produce sparticle
-        self.sParticle = "m_{gluino} (GeV)"
+        self.sParticle = "m_{#tilde{g}} (GeV)"
         # LSP
-        self.LSP = "m_{LSP} (GeV)"        
+        self.LSP = "m_{#tilde{#chi}^{0}_{1}} (GeV)"        
         # diagonal position: mLSP = mgluino - 2mtop 
-        mW = 80
+        mW = 0
         self.diagX = array('d',[0,20000])
         self.diagY = array('d',[-mW, 20000-mW])        
         

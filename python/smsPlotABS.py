@@ -19,6 +19,9 @@ class smsPlotABS(object):
     def standardDef(self, modelname, histo, obsLimits, expLimits, energy, lumi, preliminary):
         # which SMS?
         self.model = sms(modelname)
+
+        print obsLimits, expLimits
+
         self.OBS = obsLimits
         self.EXP = expLimits
         self.lumi = lumi
@@ -42,7 +45,7 @@ class smsPlotABS(object):
 
         self.c.SetRightMargin(0.19)
         self.c.SetTopMargin(0.08)
-        self.c.SetLeftMargin(0.14)
+        self.c.SetLeftMargin(0.15) #t5gg modification
         self.c.SetBottomMargin(0.14)
 
         # set x axis
@@ -77,21 +80,21 @@ class smsPlotABS(object):
         graphWhite.SetLineWidth(3)
         graphWhite.SetPoint(0,self.model.Xmin, self.model.Ymax)
         graphWhite.SetPoint(1,self.model.Xmax, self.model.Ymax)
-        graphWhite.SetPoint(2,self.model.Xmax, self.model.Ymax*0.75)
-        graphWhite.SetPoint(3,self.model.Xmin, self.model.Ymax*0.75)
+        graphWhite.SetPoint(2,self.model.Xmax, self.model.Ymax*0.75)   #change for t5gg
+        graphWhite.SetPoint(3,self.model.Xmin, self.model.Ymax*0.75)   #change for t5gg
         graphWhite.SetPoint(4,self.model.Xmin, self.model.Ymax)
         graphWhite.Draw("FSAME")
         graphWhite.Draw("LSAME")
         self.c.graphWhite = graphWhite
         
         # CMS LABEL
-        textCMS = rt.TLatex(0.22,0.98,"CMS %s, %s fb^{-1}, #sqrt{s} = %s TeV" %(self.preliminary, self.lumi, self.energy))
-        textCMS.SetNDC()
-        textCMS.SetTextAlign(13)
-        textCMS.SetTextFont(42)
-        textCMS.SetTextSize(0.038)
-        textCMS.Draw()
-        self.c.textCMS = textCMS
+        #textCMS = rt.TLatex(0.22,0.98,"CMS %s, %s fb^{-1}, #sqrt{s} = %s TeV" %(self.preliminary, self.lumi, self.energy))
+        #textCMS.SetNDC()
+        #textCMS.SetTextAlign(13)
+        #textCMS.SetTextFont(42)
+        #textCMS.SetTextSize(0.038)
+        #textCMS.Draw()
+        #self.c.textCMS = textCMS
         # MODEL LABEL
         textModelLabel= rt.TLatex(0.16,0.90,"%s  NLO+NLL exclusion" %self.model.label)
         textModelLabel.SetNDC()

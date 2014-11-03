@@ -3,6 +3,7 @@ from array import *
 from sms import *
 from color import *
 from smsPlotABS import *
+import CMS_lumi
 
 # class producing the 2D plot with contours
 class smsPlotCONT(smsPlotABS):
@@ -30,6 +31,7 @@ class smsPlotCONT(smsPlotABS):
         self.DrawLines()
         self.DrawText()
         self.DrawLegend()
+        CMS_lumi.CMS_lumi(self.c, 2, 0)
 
     def DrawObsArea(self):
         # add points to observed to close area
